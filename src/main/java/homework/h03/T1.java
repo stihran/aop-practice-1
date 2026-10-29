@@ -1,23 +1,16 @@
 package homework.h03;
 
 // base
-// https://leetcode.com/problems/roman-to-integer/
+// https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/
 class Solution {
-    public int romanToInt(String s) {
-        int ans = 0, num = 0;
-        for (int i = s.length()-1; i >= 0; i--) {
-            switch(s.charAt(i)) {
-                case 'I': num = 1; break;
-                case 'V': num = 5; break;
-                case 'X': num = 10; break;
-                case 'L': num = 50; break;
-                case 'C': num = 100; break;
-                case 'D': num = 500; break;
-                case 'M': num = 1000; break;
-            }
-            if (4 * num < ans) ans -= num;
-            else ans += num;
+    public double average(int[] salary) {
+        int sum = 0, min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+
+        for (var s : salary) {
+            sum += s;
+            min = Math.min(min, s);
+            max = Math.max(max, s);
         }
-        return ans;
+        return (double) (sum - min - max) / (salary.length - 2);
     }
 }

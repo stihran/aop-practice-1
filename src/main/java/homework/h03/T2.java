@@ -1,19 +1,14 @@
 package homework.h03;
 
 // advanced
-// https://leetcode.com/problems/reverse-integer/
+// https://leetcode.com/problems/divisible-and-non-divisible-sums-difference/description/
 class Solution {
-    public int reverse(int x) {
-
-        long rev=0;
-        while(x!=0){
-            int digit=x%10;
-            rev=rev*10+digit;
-            x=x/10;
-
-        }if(rev>Integer.MAX_VALUE || rev<Integer.MIN_VALUE)return 0;
-        return (int)rev;
-
-
+    public int differenceOfSums(int n, int m) {
+        int num1 = 0, num2 = 0;
+        for (int i = 1; i <= n; i++) {
+            if (i % m == 0) num2 += i;
+            else num1 += i;
+        }
+        return num1 - num2;
     }
 }

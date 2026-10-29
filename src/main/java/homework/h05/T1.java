@@ -1,20 +1,17 @@
 package homework.h05;
 
 // base
-// https://leetcode.com/problems/longest-common-prefix/
+// https://leetcode.com/problems/maximum-product-difference-between-two-pairs/description/
 class Solution {
-    public String longestCommonPrefix(String[] strs) {
-        Arrays.sort(strs);
-        String s1 = strs[0];
-        String s2 = strs[strs.length-1];
-        int idx = 0;
-        while(idx < s1.length() && idx < s2.length()){
-            if(s1.charAt(idx) == s2.charAt(idx)){
-                idx++;
-            } else {
-                break;
-            }
-        }
-        return s1.substring(0, idx);
+    public static int maxProductDifference(int[] nums) {
+        Arrays.sort(nums);
+
+        int n = nums.length;
+        int lowLow = nums[0];
+        int lowHigh = nums[1];
+        int highLow = nums[n - 2];
+        int highHigh = nums[n - 1];
+
+        return (highLow * highHigh) - (lowLow * lowHigh);
     }
 }

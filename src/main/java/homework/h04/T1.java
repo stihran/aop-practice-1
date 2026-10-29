@@ -1,22 +1,15 @@
 package homework.h04;
 
 // base
-// https://leetcode.com/problems/plus-one/
+// https://leetcode.com/problems/hamming-distance/description/
 class Solution {
-    public int[] plusOne(int[] digits) {
-        for (int i = digits.length - 1; i >=0; i--) {
-            if (digits[i] != 9) {
-                digits[i]++;
-                break;
-            } else {
-                digits[i] = 0;
-            }
+    public int hammingDistance(int x, int y) {
+        int c=0;
+        int dif=x^y;
+        while(dif!=0){
+            c+=dif & 1;
+            dif>>=1;
         }
-        if (digits[0] == 0) {
-            int[] res = new int[digits.length+1];
-            res[0] = 1;
-            return res;
-        }
-        return digits;
+        return c;
     }
 }

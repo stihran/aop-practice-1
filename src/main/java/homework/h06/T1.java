@@ -1,16 +1,25 @@
 package homework.h06;
 
 // base
-// https://leetcode.com/problems/reverse-words-in-a-string-iii/
-public class Solution {
-    public String reverseWords(String s) {
-        String[] words = s.split("\\s+");
-        StringBuilder reversed = new StringBuilder();
-        for (String word : words) {
-            StringBuilder reversedWord = new StringBuilder(word);
-            reversedWord.reverse();
-            reversed.append(reversedWord).append(" ");
+// https://leetcode.com/problems/valid-anagram/description/
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
         }
-        return reversed.toString().trim();
+
+        int[] freq = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            freq[s.charAt(i) - 'a']++;
+            freq[t.charAt(i) - 'a']--;
+        }
+
+        for (int i = 0; i < freq.length; i++) {
+            if (freq[i] != 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
